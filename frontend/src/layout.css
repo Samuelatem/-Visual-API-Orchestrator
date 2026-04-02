@@ -1,0 +1,144 @@
+/* ========================================
+   LAYOUT SYSTEM
+   Standardized flex-based layout structure
+   ======================================== */
+
+/* Main App Container */
+.app-container {
+  min-height: 100vh;
+  background: var(--color-bg-alt);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+header {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  color: white;
+  padding: var(--sp-lg) var(--sp-md);
+  flex-shrink: 0;
+  box-shadow: var(--shadow-md);
+  z-index: var(--z-sticky);
+}
+
+header h1 {
+  margin: 0 0 var(--sp-sm) 0;
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+}
+
+header p {
+  margin: 0;
+  font-size: var(--font-size-md);
+  opacity: 0.95;
+  line-height: var(--line-height-normal);
+}
+
+/* Main Content Area */
+main {
+  flex: 1;
+  padding: var(--sp-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* App Layout Grid */
+.app-layout {
+  display: grid;
+  grid-template-columns: var(--sidebar-width) 1fr;
+  gap: var(--sp-md);
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  height: 100%;
+  width: 100%;
+}
+
+/* Sidebar Panel */
+.project-panel {
+  background: var(--color-bg);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  overflow-y: auto;
+  flex-shrink: 0;
+}
+
+/* Content Panel */
+.designer-panel {
+  background: var(--color-bg);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  overflow-y: auto;
+  padding: var(--sp-md);
+}
+
+/* Empty State */
+.empty-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--color-text-tertiary);
+  font-size: var(--font-size-lg);
+  text-align: center;
+  padding: var(--sp-lg);
+}
+
+/* Section Container */
+.section {
+  margin-bottom: var(--sp-lg);
+}
+
+.section:last-child {
+  margin-bottom: 0;
+}
+
+/* Section Wrapper with Gap */
+.section-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-lg);
+}
+
+/* Responsive Layout */
+@media (max-width: 1024px) {
+  .app-layout {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  main {
+    padding: var(--sp-md);
+  }
+
+  header {
+    padding: var(--sp-md) var(--sp-md);
+  }
+
+  header h1 {
+    font-size: var(--font-size-3xl);
+  }
+}
+
+@media (max-width: 640px) {
+  main {
+    padding: var(--sp-sm);
+  }
+
+  .app-layout {
+    gap: var(--sp-sm);
+  }
+
+  header {
+    padding: var(--sp-md) var(--sp-sm);
+  }
+
+  header h1 {
+    font-size: var(--font-size-2xl);
+  }
+
+  header p {
+    font-size: var(--font-size-base);
+  }
+}

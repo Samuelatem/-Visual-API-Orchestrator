@@ -1,0 +1,79 @@
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = []
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Project {
+  id        String   @id @default(cuid())
+  name      String
+  tables    Table[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Table {
+  id        String   @id @default(cuid())
+  name      String
+  projectId String
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  fields    Field[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Field {
+  id        String   @id @default(cuid())
+  name      String
+  type      String
+  required  Boolean  @default(true)
+  unique    Boolean  @default(false)
+  tableId   String
+  table     Table    @relation(fields: [tableId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model DynamicSchema {
+  id        Int     @id @default(autoincrement())
+  name      String  @unique
+  schema    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Articles {
+  title  String @id @default(cuid())
+  content String
+  published Boolean
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Users {
+  email String @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Products {
+  price Float
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Book {
+  id Int @unique?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Books {
+  id Int @unique?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

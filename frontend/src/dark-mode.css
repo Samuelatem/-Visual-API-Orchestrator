@@ -1,0 +1,331 @@
+/* ========================================
+   DARK MODE THEME
+   Enhanced dark mode color scheme
+   ======================================== */
+
+/* System preference dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Dark Background Palette */
+    --color-bg: #0f1419;
+    --color-bg-alt: #1a1f2e;
+    --color-bg-hover: #252d3d;
+    --color-surface: #16191f;
+
+    /* Dark Border Palette */
+    --color-border: #2a2f3a;
+    --color-border-light: #3a3f4a;
+    --color-border-dark: #1a1f2a;
+
+    /* Dark Text Palette */
+    --color-text-primary: #e8ebf0;
+    --color-text-secondary: #b0b8c1;
+    --color-text-tertiary: #8a92a0;
+    --color-text-disabled: #5a6270;
+
+    /* Accent Colors for Dark Mode */
+    --color-primary: #7c8cff;
+    --color-primary-dark: #6b7de8;
+    --color-accent: #c084fc;
+    --color-accent-light: rgba(192, 132, 252, 0.15);
+    --color-accent-border: rgba(192, 132, 252, 0.4);
+
+    /* Status Colors for Dark Mode */
+    --color-success: #66d966;
+    --color-error: #ff6b6b;
+    --color-warning: #ffb366;
+    --color-info: #66b3ff;
+
+    /* Shadow adjustments for dark mode */
+    --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.6);
+    --shadow-xl: 0 10px 25px rgba(0, 0, 0, 0.7);
+  }
+
+  /* Dark Mode Specific Component Adjustments */
+  
+  /* Cards */
+  .card {
+    border-color: var(--color-border);
+  }
+
+  .card:hover {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 20px rgba(124, 140, 255, 0.15);
+  }
+
+  /* Inputs */
+  input[type='text'],
+  input[type='email'],
+  input[type='password'],
+  input[type='number'],
+  input[type='date'],
+  input[type='time'],
+  textarea,
+  select {
+    background: var(--color-surface);
+    border-color: var(--color-border);
+  }
+
+  input[type='text']:focus,
+  input[type='email']:focus,
+  input[type='password']:focus,
+  input[type='number']:focus,
+  input[type='date']:focus,
+  input[type='time']:focus,
+  textarea:focus,
+  select:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-accent-light),
+                inset 0 1px 2px rgba(0, 0, 0, 0.3);
+    background: var(--color-surface);
+  }
+
+  /* Buttons */
+  .button-secondary {
+    background: var(--color-bg-alt);
+    border-color: var(--color-border);
+  }
+
+  .button-secondary:hover:not(:disabled) {
+    background: var(--color-bg-hover);
+    border-color: var(--color-border-light);
+  }
+
+  /* Forms */
+  .form-group label {
+    color: var(--color-text-primary);
+  }
+
+  .form-hint {
+    color: var(--color-text-tertiary);
+  }
+
+  /* Alerts */
+  .alert-info {
+    background: rgba(102, 179, 255, 0.08);
+    color: #99ccff;
+    border-left-color: #66b3ff;
+  }
+
+  .alert-success {
+    background: rgba(102, 217, 102, 0.08);
+    color: #99ff99;
+    border-left-color: #66d966;
+  }
+
+  .alert-warning {
+    background: rgba(255, 179, 102, 0.08);
+    color: #ffcc99;
+    border-left-color: #ffb366;
+  }
+
+  .alert-error {
+    background: rgba(255, 107, 107, 0.08);
+    color: #ff9999;
+    border-left-color: #ff6b6b;
+  }
+
+  /* Code blocks */
+  code,
+  pre {
+    background: var(--color-bg-alt);
+    border-color: var(--color-border);
+  }
+
+  /* Lists and menu items */
+  .menu-item:hover,
+  .listbox-item:hover {
+    background: var(--color-bg-hover);
+  }
+
+  .menu-item.active,
+  .listbox-item.active {
+    background: rgba(124, 140, 255, 0.2);
+    color: var(--color-primary);
+  }
+
+  /* Lists */
+  .list-item {
+    border-color: var(--color-border);
+  }
+
+  .list-item:hover {
+    background: var(--color-bg-hover);
+  }
+
+  /* Accordion */
+  .accordion-header {
+    background: var(--color-bg-alt);
+    border-color: var(--color-border);
+  }
+
+  .accordion-header:hover {
+    background: var(--color-bg-hover);
+  }
+
+  .accordion-header.expanded {
+    border-bottom-color: var(--color-border);
+  }
+
+  /* Pagination */
+  .pagination-item {
+    background: var(--color-bg-alt);
+    border-color: var(--color-border);
+  }
+
+  .pagination-item:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+
+  .pagination-item.active {
+    background: var(--color-primary);
+    color: white;
+  }
+
+  /* Progress Bar */
+  .progress {
+    background: var(--color-bg-alt);
+  }
+
+  /* Tags */
+  .tag,
+  .chip {
+    background: var(--color-bg-alt);
+    border-color: var(--color-border);
+  }
+
+  .tag:hover,
+  .chip:hover {
+    background: var(--color-bg-hover);
+    border-color: var(--color-primary);
+  }
+
+  /* Table */
+  th {
+    background: var(--color-bg-alt);
+    border-bottom-color: var(--color-border);
+  }
+
+  td {
+    border-bottom-color: var(--color-border);
+  }
+
+  tr:hover {
+    background: var(--color-bg-hover);
+  }
+
+  /* Links */
+  a {
+    color: var(--color-primary);
+  }
+
+  a:hover {
+    color: var(--color-accent);
+  }
+
+  /* Scrollbar Dark Mode */
+  ::-webkit-scrollbar-track {
+    background: var(--color-bg);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-border-light);
+  }
+
+  /* Selection */
+  ::selection {
+    background: var(--color-accent-light);
+    color: var(--color-text-primary);
+  }
+
+  /* Focus visible */
+  *:focus-visible {
+    box-shadow: 0 0 0 3px var(--color-accent-light);
+  }
+
+  /* Header */
+  header {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+  }
+
+  /* Project info */
+  .project-info {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+  }
+
+  /* Input group icon */
+  .input-group-icon {
+    color: var(--color-text-secondary);
+  }
+
+  input:focus + .input-group-icon {
+    color: var(--color-primary);
+  }
+
+  /* Checkbox/Radio custom styling */
+  .checkbox input[type='checkbox'],
+  .radio input[type='radio'] {
+    background: var(--color-surface);
+    border-color: var(--color-border);
+  }
+
+  .checkbox input[type='checkbox']:hover:not(:disabled),
+  .radio input[type='radio']:hover:not(:disabled) {
+    border-color: var(--color-primary);
+  }
+
+  /* Divider */
+  .divider {
+    background: var(--color-border);
+  }
+
+  .divider-vertical {
+    background: var(--color-border);
+  }
+
+  .divider-text span {
+    background: var(--color-bg);
+  }
+}
+
+/* Manual dark mode toggle support */
+[data-theme="dark"] {
+  --color-bg: #0f1419;
+  --color-bg-alt: #1a1f2e;
+  --color-bg-hover: #252d3d;
+  --color-surface: #16191f;
+
+  --color-border: #2a2f3a;
+  --color-border-light: #3a3f4a;
+  --color-border-dark: #1a1f2a;
+
+  --color-text-primary: #e8ebf0;
+  --color-text-secondary: #b0b8c1;
+  --color-text-tertiary: #8a92a0;
+  --color-text-disabled: #5a6270;
+
+  --color-primary: #7c8cff;
+  --color-primary-dark: #6b7de8;
+  --color-accent: #c084fc;
+  --color-accent-light: rgba(192, 132, 252, 0.15);
+  --color-accent-border: rgba(192, 132, 252, 0.4);
+
+  --color-success: #66d966;
+  --color-error: #ff6b6b;
+  --color-warning: #ffb366;
+  --color-info: #66b3ff;
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.6);
+  --shadow-xl: 0 10px 25px rgba(0, 0, 0, 0.7);
+}

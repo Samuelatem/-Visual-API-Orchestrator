@@ -1,0 +1,382 @@
+/* ========================================
+   PROJECT MANAGER COMPONENT
+   Sidebar project list and manager
+   ======================================== */
+
+.project-manager {
+  padding: var(--sp-md);
+  background: var(--color-bg);
+  border-radius: var(--radius-md);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-md);
+}
+
+.project-manager h2 {
+  margin: 0;
+  font-size: var(--font-size-xl);
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Create Project Form */
+.create-project-form {
+  display: flex;
+  gap: var(--sp-sm);
+  flex-shrink: 0;
+}
+
+.create-project-form input {
+  flex: 1;
+  padding: 0 var(--sp-md);
+  min-height: var(--input-height-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-base);
+  font-family: var(--font-family-base);
+  color: var(--color-text-primary);
+  background: var(--color-bg);
+  transition: all var(--transition-normal);
+}
+
+.create-project-form input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-accent-light);
+}
+
+.create-project-form input::placeholder {
+  color: var(--color-text-disabled);
+}
+
+.create-project-form button {
+  padding: 0 var(--sp-md);
+  min-height: var(--button-height-md);
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-base);
+  transition: all var(--transition-normal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-sm);
+  white-space: nowrap;
+}
+
+.create-project-form button:hover:not(:disabled) {
+  background: var(--color-primary-dark);
+  box-shadow: var(--shadow-md);
+}
+
+.create-project-form button:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.create-project-form button:disabled {
+  background: var(--color-text-disabled);
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Error Message */
+.error {
+  padding: var(--sp-sm) var(--sp-md);
+  background: rgba(244, 67, 54, 0.1);
+  color: var(--color-error);
+  border: 1px solid var(--color-error);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--sp-sm);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-sm);
+}
+
+/* Projects List Container */
+.projects-list {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-sm);
+  padding-right: var(--sp-xs);
+}
+
+.projects-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.projects-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.projects-list::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 3px;
+}
+
+.projects-list::-webkit-scrollbar-thumb:hover {
+  background: var(--color-border-dark);
+}
+
+/* Empty State */
+.projects-list .empty {
+  text-align: center;
+  color: var(--color-text-tertiary);
+  padding: var(--sp-lg) var(--sp-md);
+  font-size: var(--font-size-sm);
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Project Item Card */
+.project-item {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-normal);
+  overflow: hidden;
+}
+
+.project-item:hover {
+  border-color: var(--color-border-dark);
+  box-shadow: var(--shadow-sm);
+}
+
+.project-item.active {
+  border-color: var(--color-primary);
+  background: rgba(102, 126, 234, 0.05);
+  box-shadow: 0 0 0 2px var(--color-accent-light);
+}
+
+.project-item.active .project-select {
+  color: var(--color-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Project Item Header */
+.project-header {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-sm);
+  padding: var(--sp-sm) var(--sp-md);
+  background: var(--color-bg);
+  transition: background var(--transition-normal);
+}
+
+.project-item:hover .project-header {
+  background: var(--color-bg-hover);
+}
+
+.project-select {
+  flex: 1;
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 0;
+  cursor: pointer;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  transition: color var(--transition-normal);
+  font-family: var(--font-family-base);
+}
+
+.project-select:hover {
+  color: var(--color-primary);
+}
+
+/* Project Actions */
+.project-actions {
+  display: flex;
+  gap: var(--sp-xs);
+  align-items: center;
+}
+
+.expand-btn,
+.delete-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--sp-xs);
+  color: var(--color-text-secondary);
+  transition: all var(--transition-normal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-xs);
+}
+
+.expand-btn:hover,
+.delete-btn:hover {
+  color: var(--color-text-primary);
+  background: var(--color-bg-alt);
+}
+
+.delete-btn:hover {
+  color: var(--color-error);
+}
+
+.expand-btn .material-icons,
+.delete-btn .material-icons {
+  font-size: var(--icon-size-md);
+  width: var(--icon-size-md);
+  height: var(--icon-size-md);
+}
+
+/* Mobile Responsive */
+@media (max-width: 640px) {
+  .project-manager {
+    padding: var(--sp-sm);
+    gap: var(--sp-sm);
+  }
+
+  .create-project-form {
+    flex-direction: column;
+  }
+
+  .project-header {
+    padding: var(--sp-xs) var(--sp-sm);
+  }
+}
+
+.project-tables {
+  padding: 8px 12px;
+  background: #f8f9fa;
+  border-top: 1px solid #ddd;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.project-tables .empty-tables {
+  color: #999;
+  font-size: 12px;
+  padding: 8px 0;
+  margin: 0;
+}
+
+.table-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  font-size: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+.table-item:last-child {
+  border-bottom: none;
+}
+
+.table-info {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 8px;
+}
+
+.table-name {
+  color: #333;
+  font-weight: 500;
+}
+
+.field-count {
+  color: #999;
+  font-size: 11px;
+}
+
+.table-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.edit-btn,
+.delete-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 2px 4px;
+  color: #666;
+  font-size: 12px;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.edit-btn .material-icons,
+.delete-btn .material-icons {
+  font-size: 18px;
+  line-height: 18px;
+}
+
+.edit-btn:hover {
+  color: #007bff;
+}
+
+.delete-btn:hover {
+  color: #dc3545;
+}
+
+.table-edit {
+  display: flex;
+  gap: 4px;
+  flex: 1;
+  align-items: center;
+  width: 100%;
+}
+
+.table-edit input {
+  flex: 1;
+  padding: 4px 6px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  font-size: 12px;
+  min-width: 100px;
+}
+
+.table-edit input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.save-btn,
+.cancel-btn {
+  background: none;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  padding: 3px 8px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.save-btn {
+  background: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.save-btn:hover {
+  background: #0056b3;
+}
+
+.cancel-btn {
+  background: #f8f9fa;
+  color: #333;
+  border-color: #ddd;
+}
+
+.cancel-btn:hover {
+  background: white;
+  border-color: #999;
+}

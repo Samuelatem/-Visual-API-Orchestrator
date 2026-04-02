@@ -1,0 +1,117 @@
+/* ========================================
+   GLOBAL STYLES & TYPOGRAPHY
+   Imports design system variables and layout
+   ======================================== */
+
+@import './variables.css';
+@import './layout.css';
+
+/* Typography & Base Styles */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 18px;
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+  @media (max-width: 640px) {
+    font-size: 14px;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-primary);
+  background: var(--color-bg-alt);
+  color-scheme: light dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin: 0;
+  line-height: var(--line-height-tight);
+}
+
+h1 {
+  font-size: var(--font-size-4xl);
+  margin-bottom: var(--sp-lg);
+}
+
+h2 {
+  font-size: var(--font-size-2xl);
+  margin-bottom: var(--sp-md);
+}
+
+h3 {
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--sp-sm);
+}
+
+/* Paragraph */
+p {
+  margin: 0;
+  line-height: var(--line-height-normal);
+}
+
+/* Code */
+code,
+pre {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
+  background: var(--color-bg-alt);
+  color: var(--color-text-primary);
+  border-radius: var(--radius-sm);
+}
+
+code {
+  padding: var(--sp-xs) var(--sp-sm);
+  display: inline-block;
+  border: 1px solid var(--color-border);
+}
+
+/* Links */
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-normal);
+}
+
+a:hover {
+  color: var(--color-primary-dark);
+  text-decoration: underline;
+}
+
+/* Lists */
+ul,
+ol {
+  margin: 0;
+  padding-left: var(--sp-md);
+}
+
+li {
+  margin-bottom: var(--sp-sm);
+}

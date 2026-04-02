@@ -1,0 +1,536 @@
+/* ========================================
+   INTERACTIONS & REFINED STATES
+   Enhanced component behaviors and animations
+   ======================================== */
+
+/* ========== FOCUS STATES (Accessibility) ========== */
+/* Universal focus style */
+*:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-accent-light);
+  border-color: var(--color-primary);
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+a:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-accent-light);
+}
+
+/* Remove default focus for mouse users, keep for keyboard */
+button:focus:not(:focus-visible),
+input:focus:not(:focus-visible),
+select:focus:not(:focus-visible),
+textarea:focus:not(:focus-visible),
+a:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ========== BUTTON ENHANCEMENTS ========== */
+button,
+.button {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Button hover ripple effect */
+button::before,
+.button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  opacity: 0;
+}
+
+button:active:not(:disabled)::before,
+.button:active:not(:disabled)::before {
+  animation: ripple var(--transition-normal) ease-out;
+}
+
+@keyframes ripple {
+  to {
+    width: 300px;
+    height: 300px;
+    opacity: 0;
+  }
+}
+
+/* Primary button enhanced states */
+.button-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);
+}
+
+.button-primary:active:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(102, 126, 234, 0.2);
+}
+
+/* Secondary button enhanced states */
+.button-secondary:hover:not(:disabled) {
+  transform: translateY(-1px);
+  background: var(--color-bg-hover);
+  box-shadow: var(--shadow-sm);
+}
+
+.button-secondary:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Danger button enhanced states */
+.button-danger:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(244, 67, 54, 0.3);
+}
+
+.button-danger:active:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(244, 67, 54, 0.2);
+}
+
+/* Success button enhanced states */
+.button-success:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(76, 175, 80, 0.3);
+}
+
+.button-success:active:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(76, 175, 80, 0.2);
+}
+
+/* ========== INPUT ENHANCEMENTS ========== */
+input[type='text'],
+input[type='email'],
+input[type='password'],
+input[type='number'],
+input[type='date'],
+input[type='time'],
+textarea,
+select {
+  position: relative;
+}
+
+/* Input focus animation */
+input[type='text']:focus,
+input[type='email']:focus,
+input[type='password']:focus,
+input[type='number']:focus,
+input[type='date']:focus,
+input[type='time']:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-accent-light),
+              inset 0 1px 2px rgba(0, 0, 0, 0.05);
+  background: var(--color-bg);
+  transition: all var(--transition-normal);
+}
+
+/* Input placeholder styling */
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-text-disabled);
+  font-weight: var(--font-weight-regular);
+}
+
+/* ========== FORM VALIDATION STYLES ========== */
+/* Valid state */
+input.input-success,
+textarea.input-success {
+  border-color: var(--color-success);
+  background: rgba(76, 175, 80, 0.02);
+}
+
+input.input-success:focus,
+textarea.input-success:focus {
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.15),
+              inset 0 1px 2px rgba(0, 0, 0, 0.05);
+  border-color: var(--color-success);
+}
+
+/* Error state */
+input.input-error,
+textarea.input-error {
+  border-color: var(--color-error);
+  background: rgba(244, 67, 54, 0.02);
+}
+
+input.input-error:focus,
+textarea.input-error:focus {
+  box-shadow: 0 0 0 3px rgba(244, 67, 54, 0.15),
+              inset 0 1px 2px rgba(0, 0, 0, 0.05);
+  border-color: var(--color-error);
+}
+
+/* Success message icon */
+.form-success {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-sm);
+  font-size: var(--font-size-sm);
+  color: var(--color-success);
+  margin-top: var(--sp-xs);
+}
+
+.form-success .material-icons {
+  font-size: var(--icon-size-sm);
+  color: var(--color-success);
+}
+
+/* ========== LINK ENHANCEMENTS ========== */
+a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-xs);
+}
+
+a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-primary);
+  transition: width var(--transition-normal);
+}
+
+a:hover::after {
+  width: 100%;
+}
+
+a:focus-visible {
+  outline: none;
+  border-radius: var(--radius-xs);
+  box-shadow: 0 0 0 3px var(--color-accent-light);
+  padding: 2px 4px;
+}
+
+/* ========== CARD ENHANCEMENTS ========== */
+.card {
+  transition: all var(--transition-normal);
+}
+
+.card:hover {
+  transform: translateY(-2px);
+}
+
+.card:active {
+  transform: translateY(0);
+}
+
+/* ========== LOADING STATES ========== */
+.loading {
+  position: relative;
+  color: transparent;
+  pointer-events: none;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+  border: 2px solid var(--color-border);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin var(--transition-slow) linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Skeleton loading state */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-bg-alt) 0%,
+    var(--color-bg-hover) 50%,
+    var(--color-bg-alt) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s ease-in-out infinite;
+  border-radius: var(--radius-sm);
+  color: transparent;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* ========== TABLE ENHANCEMENTS ========== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-base);
+}
+
+th {
+  text-align: left;
+  th {
+    font-weight: var(--font-weight-semibold);
+    padding: var(--sp-md);
+    border-bottom: 2px solid var(--color-border);
+    color: var(--color-text-primary);
+    background: var(--color-bg-alt);
+  }
+}
+
+td {
+  padding: var(--sp-md);
+  border-bottom: 1px solid var(--color-border);
+}
+
+tr:hover {
+  background: var(--color-bg-hover);
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+/* ========== TEXT SELECTION ========== */
+::selection {
+  background: var(--color-accent-light);
+  color: var(--color-text-primary);
+}
+
+::-moz-selection {
+  background: var(--color-accent-light);
+  color: var(--color-text-primary);
+}
+
+/* ========== SCROLLBAR STYLING ========== */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+  transition: background var(--transition-normal);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-border-dark);
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-color: var(--color-border) var(--color-bg);
+  scrollbar-width: thin;
+}
+
+/* ========== DISABLED STATES ========== */
+button:disabled,
+input:disabled,
+textarea:disabled,
+select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+button:disabled {
+  background-color: var(--color-text-disabled);
+  color: white;
+}
+
+/* ========== ICON BUTTON ENHANCEMENTS ========== */
+.button-icon {
+  transition: all var(--transition-normal);
+  color: var(--color-text-secondary);
+}
+
+.button-icon:hover:not(:disabled) {
+  color: var(--color-primary);
+  background: var(--color-accent-light);
+  transform: scale(1.08);
+}
+
+.button-icon:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+/* ========== BADGE STYLING ========== */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-xs);
+  padding: var(--sp-xs) var(--sp-sm);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  white-space: nowrap;
+}
+
+.badge-primary {
+  background: var(--color-accent-light);
+  color: var(--color-primary);
+}
+
+.badge-success {
+  background: rgba(76, 175, 80, 0.1);
+  color: var(--color-success);
+}
+
+.badge-error {
+  background: rgba(244, 67, 54, 0.1);
+  color: var(--color-error);
+}
+
+.badge-warning {
+  background: rgba(255, 152, 0, 0.1);
+  color: #ff9800;
+}
+
+/* ========== TOOLTIP STYLING ========== */
+[aria-label] {
+  position: relative;
+}
+
+[aria-label]:hover::before {
+  content: attr(aria-label);
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: var(--sp-sm) var(--sp-md);
+  background: var(--color-text-primary);
+  color: var(--color-bg);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  white-space: nowrap;
+  z-index: var(--z-tooltip, 500);
+  pointer-events: none;
+  animation: fadeIn var(--transition-normal);
+}
+
+[aria-label]:hover::after {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: var(--color-text-primary);
+  z-index: var(--z-tooltip, 500);
+  pointer-events: none;
+  animation: fadeIn var(--transition-normal);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ========== TRANSITION UTILITIES ========== */
+.transition-fast {
+  transition: all var(--transition-fast);
+}
+
+.transition-normal {
+  transition: all var(--transition-normal);
+}
+
+.transition-slow {
+  transition: all var(--transition-slow);
+}
+
+/* ========== HOVER UTILITIES ========== */
+.hover-shadow:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.hover-scale:hover {
+  transform: scale(1.03);
+}
+
+/* ========== CURSOR UTILITIES ========== */
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.cursor-not-allowed {
+  cursor: not-allowed;
+}
+
+.cursor-help {
+  cursor: help;
+}
+
+.cursor-wait {
+  cursor: wait;
+}
+
+/* ========== MOBILE INTERACTIONS ========== */
+@media (max-width: 640px) {
+  /* Increase touch target sizes on mobile */
+  button,
+  .button,
+  input,
+  select,
+  textarea {
+    min-height: 44px;
+  }
+
+  .button-icon {
+    min-width: 44px;
+    width: 44px;
+    height: 44px;
+  }
+
+  /* Adjust ripple effect for mobile */
+  button::before,
+  .button::before {
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  /* Reduce hover effect on touch devices */
+  button:hover:not(:disabled)::before,
+  .button:hover:not(:disabled)::before {
+    display: none;
+  }
+
+  /* Touch-friendly spacing */
+  .button {
+    padding: 0 var(--sp-md);
+  }
+}

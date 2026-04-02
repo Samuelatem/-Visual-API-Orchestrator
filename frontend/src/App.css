@@ -1,0 +1,56 @@
+/* ========================================
+   APP SPECIFIC STYLES
+   Application layout and custom styles
+   ======================================== */
+
+@import './components.css';
+@import './interactions.css';
+@import './utilities.css';
+@import './dark-mode.css';
+@import './icons.css';
+
+/* Remove duplicate styles already in variables.css and layout.css */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.app-container {
+  min-height: 100vh;
+  background: var(--color-bg-alt);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header with Theme Toggle */
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* Empty State Styling */
+.empty-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--color-text-tertiary);
+  font-size: var(--font-size-lg);
+  text-align: center;
+  padding: var(--sp-lg);
+}
+
+/* Responsive - Optional layout fixes */
+@media (max-width: 768px) {
+  .app-layout {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+}
+

@@ -427,7 +427,7 @@ export default router;
 export async function generateBackendProject(): Promise<ExportedProject> {
   try {
     // Step 1: Get all tables from the database
-    const allTables = await prisma.dynamicSchema.findMany();
+    const allTables = await prisma.table.findMany();
     const tableNames = allTables.map((t) => t.name);
 
     if (tableNames.length === 0) {

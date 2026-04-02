@@ -3,17 +3,11 @@
    Comprehensive icon sizing, styling, and utilities
    ======================================== */
 
-/* Material Icons Integration */
-@font-face {
-  font-family: 'Material Icons';
-  font-style: normal;
-  font-weight: 400;
-  src: url('https://fonts.googleapis.com/icon?family=Material+Icons') format('woff2');
-}
+/* Material Symbols Outlined - loaded via index.html */
 
 /* Icon Base Styles */
 .icon {
-  font-family: 'Material Icons';
+  font-family: 'Material Symbols Outlined';
   font-weight: normal;
   font-style: normal;
   font-size: 24px;
@@ -54,9 +48,9 @@
   height: var(--icon-size-lg);
 }
 
-/* Material Icons Alternate Name */
+/* Material Icons Alternate Name (using Material Symbols Outlined) */
 .material-icons {
-  font-family: 'Material Icons';
+  font-family: 'Material Symbols Outlined';
   font-weight: normal;
   font-style: normal;
   font-size: 24px;
